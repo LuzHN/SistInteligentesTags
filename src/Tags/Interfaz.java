@@ -25,6 +25,7 @@ public class Interfaz extends javax.swing.JFrame {
      * Creates new form Interfaz
      */
     public Interfaz() {
+
         initComponents();
     }
 
@@ -119,7 +120,8 @@ public class Interfaz extends javax.swing.JFrame {
 
     public void Analizar() throws FileNotFoundException {
 
-        File archivo = new File("./src/Tags/entrada.txt");
+        String filePath = new File("").getAbsolutePath();
+        File archivo = new File(filePath + "/entrada.txt");
         PrintWriter writer;
 
         try {
@@ -129,7 +131,7 @@ public class Interfaz extends javax.swing.JFrame {
         } catch (FileNotFoundException e) {
         }
 
-        Reader reader = new BufferedReader(new FileReader("./src/Tags/entrada.txt"));
+        Reader reader = new BufferedReader(new FileReader(filePath + "/entrada.txt"));
         Lexer lexer = new Lexer(reader);
 
         String salida = "";
@@ -178,7 +180,12 @@ public class Interfaz extends javax.swing.JFrame {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        
+        
          */
+        String filePath = new File("").getAbsolutePath();
+        File archivo = new File(filePath + "/Lexer.flex");
+        jflex.Main.generate(archivo);
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
