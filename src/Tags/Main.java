@@ -5,10 +5,20 @@
  */
 package Tags;
 
+import java.io.File;
+
 /**
  *
  * @author Cabrera
  */
-public enum Token {
-    DATO, NUEVALINEA, ERROR
+public class Main {
+    
+    
+    public static void main(String[] args){
+
+        File archivo = new File("./src/Tags/Lexer.flex");
+        jflex.Main.generate(archivo);
+    }
+    
+
 }

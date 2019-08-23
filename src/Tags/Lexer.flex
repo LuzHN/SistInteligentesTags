@@ -14,6 +14,7 @@ import static Tags.Token.*;
 AperturaTag = "<"
 CerraduraTag = ">"
 AperturaTagFinal = "</"
+nuevalinea =  "\n"
 
 %state HTML
 
@@ -22,6 +23,10 @@ AperturaTagFinal = "</"
 <YYINITIAL>{
     {AperturaTag}  {yybegin(HTML);}
     {AperturaTagFinal}  {yybegin(HTML);}
+    {nuevalinea} {
+        lexema = yytext();
+        return NUEVALINEA;
+    }
     . { //cualquier otra cosa
         lexema = yytext();
         return DATO;
